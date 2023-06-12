@@ -1,11 +1,10 @@
-# terraform-module-template
-Template for Terraform modules
+# terraform-aws-newrelic-link-integration
 
-<!-- Uncomment and replace with your module name
-[![lint](https://github.com/flaconi/<MODULENAME>/workflows/lint/badge.svg)](https://github.com/flaconi/<MODULENAME>/actions?query=workflow%3Alint)
-[![test](https://github.com/flaconi/<MODULENAME>/workflows/test/badge.svg)](https://github.com/flaconi/<MODULENAME>/actions?query=workflow%3Atest)
-[![Tag](https://img.shields.io/github/tag/flaconi/<MODULENAME>.svg)](https://github.com/flaconi/<MODULENAME>/releases)
--->
+This module create push and pull integration from aws to newrelic with strongly opinionated pull settings
+
+[![lint](https://github.com/flaconi/terraform-aws-newrelic-link-integration/workflows/lint/badge.svg)](https://github.com/flaconi/terraform-aws-newrelic-link-integration/actions?query=workflow%3Alint)
+[![test](https://github.com/flaconi/terraform-aws-newrelic-link-integration/workflows/test/badge.svg)](https://github.com/flaconi/terraform-aws-newrelic-link-integration/actions?query=workflow%3Atest)
+[![Tag](https://img.shields.io/github/tag/flaconi/terraform-aws-newrelic-link-integration.svg)](https://github.com/flaconi/terraform-aws-newrelic-link-integration/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <!-- TFDOCS_HEADER_START -->
@@ -16,7 +15,10 @@ Template for Terraform modules
 <!-- TFDOCS_PROVIDER_START -->
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.53 |
+| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | ~> 3.24.1 |
 
 <!-- TFDOCS_PROVIDER_END -->
 
@@ -25,14 +27,40 @@ No providers.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.53 |
+| <a name="requirement_newrelic"></a> [newrelic](#requirement\_newrelic) | ~> 3.24.1 |
 
 <!-- TFDOCS_REQUIREMENTS_END -->
 
 <!-- TFDOCS_INPUTS_START -->
 ## Required Inputs
 
-No required inputs.
+The following input variables are required:
+
+### <a name="input_newrelic_api_key_ssm_path"></a> [newrelic\_api\_key\_ssm\_path](#input\_newrelic\_api\_key\_ssm\_path)
+
+Description: ssm path where to retrieve the nr api key
+
+Type: `string`
+
+### <a name="input_newrelic_account_id_ssm_path"></a> [newrelic\_account\_id\_ssm\_path](#input\_newrelic\_account\_id\_ssm\_path)
+
+Description: ssm path where to retrieve the nr account id
+
+Type: `string`
+
+### <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn)
+
+Description: role arn of the nr integration role
+
+Type: `string`
+
+### <a name="input_name"></a> [name](#input\_name)
+
+Description: cloud integration name
+
+Type: `string`
 
 ## Optional Inputs
 
