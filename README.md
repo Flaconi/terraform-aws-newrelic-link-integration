@@ -18,7 +18,7 @@ This module create push and pull integration from aws to newrelic with strongly 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.53 |
-| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | ~> 3.24.1 |
+| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | >= 3.35.2 |
 
 <!-- TFDOCS_PROVIDER_END -->
 
@@ -29,7 +29,7 @@ This module create push and pull integration from aws to newrelic with strongly 
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.53 |
-| <a name="requirement_newrelic"></a> [newrelic](#requirement\_newrelic) | ~> 3.24.1 |
+| <a name="requirement_newrelic"></a> [newrelic](#requirement\_newrelic) | >= 3.35.2 |
 
 <!-- TFDOCS_REQUIREMENTS_END -->
 
@@ -61,6 +61,41 @@ Type: `string`
 Description: cloud integration name
 
 Type: `string`
+
+### <a name="input_integrations"></a> [integrations](#input\_integrations)
+
+Description: n/a
+
+Type:
+
+```hcl
+object({
+    billing = optional(object({
+      metrics_polling_interval = optional(number, 3600)
+    }))
+    health = optional(object({
+      metrics_polling_interval = optional(number, 600)
+    }))
+    elasticbeanstalk = optional(object({
+      aws_regions              = optional(list(string), ["eu-central-1"])
+      fetch_extended_inventory = optional(bool, true)
+      fetch_tags               = optional(bool, true)
+      metrics_polling_interval = optional(number, 300)
+    }))
+
+    cloudfront = optional(object({
+      metrics_polling_interval = optional(number, 300)
+      fetch_lambdas_at_edge    = optional(bool, true)
+      fetch_tags               = optional(bool, true)
+    }))
+
+    ecs = optional(object({
+      aws_regions              = optional(list(string), ["eu-central-1"])
+      metrics_polling_interval = optional(number, 300)
+      fetch_tags               = optional(bool, true)
+    }))
+  })
+```
 
 ## Optional Inputs
 

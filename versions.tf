@@ -7,7 +7,7 @@ terraform {
 
     newrelic = {
       source  = "newrelic/newrelic"
-      version = "~> 3.24.1"
+      version = ">= 3.35.2"
     }
   }
   required_version = ">= 1.3"
