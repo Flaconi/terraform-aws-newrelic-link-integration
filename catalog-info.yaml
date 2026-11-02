@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-aws-newrelic-link-integration
+  description: >
+    Links aws cloud integration and setup strongly opinionated pull and push link
+  annotations:
+    github.com/project-slug: Flaconi/terraform-aws-newrelic-link-integration
+  tags:
+    - terraform
+    - aws
+    - newrelic
+
+spec:
+  type: library
+  lifecycle: production
+  owner: group:platform
+  system: aws-infrastructure
+  providesApis: []
